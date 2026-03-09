@@ -3,8 +3,10 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
+import { ActivitiesCarousel } from '@/components/activities-carousel'
+import { PhotoSlideshow } from '@/components/photo-slideshow'
 import { client } from '@/lib/sanity'
-import type { Post, HomePage } from '@/lib/sanity'
+import type { HomePage, Activity, Photo } from '@/lib/sanity'
 import { Heart, Target, Users, Handshake, Shield, Eye, ArrowRight } from 'lucide-react'
 
 async function getHomePageData() {
@@ -35,36 +37,57 @@ async function getHomePageData() {
   }
 }
 
-async function getRecentPosts() {
+async function getActivities() {
   try {
-    const posts = await client.fetch<Post[]>(
-      `*[_type == "post"] | order(publishedAt desc)[0...3]{
+    const activities = await client.fetch<Activity[]>(
+      `*[_type == "activity"] | order(publishedAt desc){
         _id,
         title,
-        slug,
-        publishedAt,
-        excerpt,
-        "mainImage": mainImage{
+        "photo": photo{
           "url": asset->url,
-          alt
-        }
+          "alt": asset->altText
+        },
+        excerpt,
+        link,
+        publishedAt
       }`
     )
-    return posts
+    return activities
   } catch (error) {
-    console.log('[v0] Error fetching posts:', error)
+    console.log('[v0] Error fetching activities:', error)
+    return []
+  }
+}
+
+async function getPhotos() {
+  try {
+    const photos = await client.fetch<Photo[]>(
+      `*[_type == "photo"] | order(order asc){
+        _id,
+        title,
+        "image": image{
+          "url": asset->url
+        },
+        alt,
+        order
+      }`
+    )
+    return photos
+  } catch (error) {
+    console.log('[v0] Error fetching photos:', error)
     return []
   }
 }
 
 export default async function Page() {
   const homeData = await getHomePageData()
-  const recentPosts = await getRecentPosts()
+  const activities = await getActivities()
+  const photos = await getPhotos()
 
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      
+
       <main className="flex-1">
         {/* Hero Section */}
         <section
@@ -75,8 +98,9 @@ export default async function Page() {
           "
         >
           {/* Overlay with brand color tint */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/85 to-primary/70" />
-          
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/85 to-primary/70 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-br from-foreground/95 via-foreground/85 to-foreground/70" />
+
           {/* Decorative elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-primary-foreground/10 blur-3xl" />
@@ -85,11 +109,7 @@ export default async function Page() {
 
           <div className="relative container mx-auto px-4">
             <div className="mx-auto max-w-4xl text-center text-primary-foreground">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-2 text-sm font-medium backdrop-blur-sm">
-                <span className="h-2 w-2 rounded-full bg-primary-foreground animate-pulse" />
-                Fondation E.S.D.R. - Ecole Secondaire du Rocher
-              </div>
-              
+
               <h1 className="mb-6 font-heading uppercase text-5xl font-bold leading-none tracking-tight md:text-7xl">
                 {homeData?.heroTitle || "Ensemble pour l'avenir de nos jeunes"}
               </h1>
@@ -100,7 +120,7 @@ export default async function Page() {
               </p>
 
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Button asChild size="lg" className="min-w-[200px] bg-primary-foreground text-primary shadow-lg shadow-foreground/20 hover:bg-primary-foreground/90">
+                <Button asChild size="lg" className="min-w-[200px] bg-primary-foreground text-foreground shadow-lg shadow-foreground/20 hover:bg-primary-foreground/90">
                   <Link href="/faire-un-don">
                     Faire un don
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -243,7 +263,7 @@ export default async function Page() {
           </div>
         </section>
 
-        {/* Recent Activities Section */}
+        {/* Activities Section */}
         <section id="activites" className="bg-muted py-20 md:py-28">
           <div className="container mx-auto px-4">
             <div className="mb-14 text-center">
@@ -256,46 +276,7 @@ export default async function Page() {
               </p>
             </div>
 
-            {recentPosts.length > 0 ? (
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {recentPosts.map((post) => (
-                  <Card key={post._id} className="group overflow-hidden border-0 bg-card shadow-lg shadow-foreground/5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    {post.mainImage?.url && (
-                      <div className="aspect-video w-full overflow-hidden bg-muted">
-                        <img
-                          src={post.mainImage.url}
-                          alt={post.mainImage.alt || post.title}
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                      </div>
-                    )}
-                    <CardHeader>
-                      <CardTitle className="line-clamp-2 text-xl">{post.title}</CardTitle>
-                      <CardDescription className="font-medium text-primary">
-                        {new Date(post.publishedAt).toLocaleDateString('fr-FR', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
-                        })}
-                      </CardDescription>
-                    </CardHeader>
-                    {post.excerpt && (
-                      <CardContent>
-                        <p className="line-clamp-3 text-muted-foreground leading-relaxed">
-                          {post.excerpt}
-                        </p>
-                      </CardContent>
-                    )}
-                  </Card>
-                ))}
-              </div>
-            ) : (
-              <div className="mx-auto max-w-lg rounded-2xl bg-card p-8 text-center shadow-lg">
-                <p className="text-muted-foreground leading-relaxed">
-                  Les activités récentes seront bientôt disponibles. Revenez prochainement pour découvrir nos dernières initiatives.
-                </p>
-              </div>
-            )}
+            <ActivitiesCarousel activities={activities} />
           </div>
         </section>
 
@@ -306,14 +287,14 @@ export default async function Page() {
               {/* Decorative elements */}
               <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-primary-foreground/10 blur-3xl" />
               <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-primary-foreground/5 blur-3xl" />
-              
+
               <div className="relative">
                 <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary-foreground/70">Faites la différence</span>
                 <h2 className="mb-6 font-heading uppercase text-4xl font-bold text-balance md:text-5xl">
                   Votre soutien fait la différence
                 </h2>
                 <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-primary-foreground/90 md:text-xl">
-                  Chaque don contribue directement à améliorer l'éducation et l'avenir de nos jeunes. 
+                  Chaque don contribue directement à améliorer l'éducation et l'avenir de nos jeunes.
                   Ensemble, nous pouvons créer un impact durable sur notre communauté.
                 </p>
                 <Button asChild size="lg" className="text-base bg-primary-foreground text-primary shadow-lg shadow-foreground/20 hover:bg-primary-foreground/90">
@@ -340,25 +321,7 @@ export default async function Page() {
               </p>
             </div>
 
-            {homeData?.gallery && homeData.gallery.length > 0 ? (
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {homeData.gallery.map((image) => (
-                  <div key={image._key} className="group overflow-hidden rounded-xl shadow-lg">
-                    <img
-                      src={image.url}
-                      alt={image.alt || 'Photo de galerie'}
-                      className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="mx-auto max-w-lg rounded-2xl bg-card p-8 text-center shadow-lg">
-                <p className="text-muted-foreground leading-relaxed">
-                  La galerie photo sera bientôt remplie avec nos meilleurs moments. Revenez prochainement!
-                </p>
-              </div>
-            )}
+            <PhotoSlideshow photos={photos} />
           </div>
         </section>
       </main>

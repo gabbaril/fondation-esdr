@@ -22,6 +22,28 @@ export interface Post {
   }
 }
 
+export interface Activity {
+  _id: string
+  title: string
+  photo: {
+    url: string
+    alt?: string
+  }
+  excerpt: string
+  link?: string
+  publishedAt: string
+}
+
+export interface Photo {
+  _id: string
+  title?: string
+  image: {
+    url: string
+  }
+  alt?: string
+  order: number
+}
+
 export interface GalleryImage {
   _id: string
   _key: string
