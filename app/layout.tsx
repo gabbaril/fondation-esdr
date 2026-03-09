@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Inter, Bebas_Neue } from 'next/font/google'
 
 import './globals.css'
 
@@ -9,25 +9,33 @@ const inter = Inter({
   display: 'swap',
 })
 
-const playfair = Playfair_Display({ 
+const bebas = Bebas_Neue({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-bebas',
+  weight: '400', // Bebas only has 400
   display: 'swap',
 })
 
 export const metadata: Metadata = {
   title: 'Fondation École - Ensemble pour l\'Éducation',
   description: 'La Fondation École soutient l\'éducation des jeunes. Faites un don pour contribuer à notre mission.',
-  generator: 'v0.app',
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="fr" className={`${inter.variable} ${bebas.variable}`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   )

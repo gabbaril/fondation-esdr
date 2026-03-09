@@ -7,10 +7,10 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
-                <span className="font-serif text-xl font-bold text-primary-foreground">F</span>
+              <div className="flex h-12 w-12 items-center justify-center">
+                <img src="/fondation-esdr.png" alt="Cap2B" className="h-[100%]"/>
               </div>
-              <span className="font-serif text-xl font-semibold">Fondation École</span>
+              <span className="font-heading uppercase text-xl font-semibold">Fondation ESDR</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Ensemble pour l'éducation des jeunes. Notre mission est de soutenir et développer 

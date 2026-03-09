@@ -67,16 +67,28 @@ export default async function Page() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-20 md:py-32">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-3xl text-center">
-              <h1 className="mb-6 font-serif text-4xl font-bold leading-tight text-balance md:text-6xl">
-                {homeData?.heroTitle || 'Ensemble pour l\'éducation des jeunes'}
+        <section
+          className="
+            relative overflow-hidden py-40 md:py-60
+            bg-[url('/images/fondation-esdr-hero.jpg')]
+            bg-cover bg-center bg-no-repeat
+          "
+        >
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 to-black/60" />
+
+          <div className="relative container mx-auto px-4">
+            <div className="mx-auto max-w-3xl text-center text-white">
+              <h1 className="mb-6 font-heading uppercase text-4xl font-bold leading-tight md:text-6xl">
+                {homeData?.heroTitle || "Ensemble pour l'éducation des jeunes"}
               </h1>
-              <p className="mb-8 text-lg text-muted-foreground leading-relaxed md:text-xl">
-                {homeData?.heroSubtitle || 'Soutenez notre mission et contribuez à offrir un avenir meilleur aux enfants de notre communauté.'}
+
+              <p className="mb-8 text-lg text-white/90 md:text-xl">
+                {homeData?.heroSubtitle ||
+                  "Soutenez notre mission et contribuez à offrir un avenir meilleur aux enfants de notre communauté."}
               </p>
-              <Button asChild size="lg" className="text-base">
+
+              <Button asChild size="lg">
                 <Link href="/faire-un-don">Faire un don maintenant</Link>
               </Button>
             </div>
@@ -87,7 +99,7 @@ export default async function Page() {
         <section id="mission" className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="mb-4 font-serif text-3xl font-bold text-balance md:text-4xl">
+              <h2 className="mb-4 font-heading uppercase text-3xl font-bold text-balance md:text-4xl">
                 {homeData?.missionTitle || 'Notre Mission et Valeurs'}
               </h2>
               <p className="mb-12 text-lg text-muted-foreground leading-relaxed">
@@ -165,7 +177,7 @@ export default async function Page() {
         <section id="activites" className="bg-muted/50 py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="mb-12 text-center">
-              <h2 className="mb-4 font-serif text-3xl font-bold text-balance md:text-4xl">
+              <h2 className="mb-4 font-heading uppercase text-3xl font-bold text-balance md:text-4xl">
                 Nos Activités Récentes
               </h2>
               <p className="text-lg text-muted-foreground">
@@ -220,7 +232,7 @@ export default async function Page() {
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-3xl rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-8 text-center text-primary-foreground md:p-12">
-              <h2 className="mb-4 font-serif text-3xl font-bold text-balance md:text-4xl">
+              <h2 className="mb-4 font-heading uppercase text-3xl font-bold text-balance md:text-4xl">
                 Votre soutien fait la différence
               </h2>
               <p className="mb-8 text-lg leading-relaxed opacity-90">
@@ -238,7 +250,7 @@ export default async function Page() {
         <section id="galerie" className="bg-muted/50 py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="mb-12 text-center">
-              <h2 className="mb-4 font-serif text-3xl font-bold text-balance md:text-4xl">
+              <h2 className="mb-4 font-heading uppercase text-3xl font-bold text-balance md:text-4xl">
                 Galerie Photo
               </h2>
               <p className="text-lg text-muted-foreground">

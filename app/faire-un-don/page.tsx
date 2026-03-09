@@ -17,7 +17,7 @@ export default function DonationPage() {
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl">
-              <h1 className="mb-6 text-center font-serif text-4xl font-bold text-balance md:text-5xl">
+              <h1 className="mb-6 text-center font-heading uppercase text-4xl font-bold text-balance md:text-5xl">
                 Faire un don
               </h1>
               <p className="mb-12 text-center text-lg text-muted-foreground leading-relaxed">
@@ -26,8 +26,8 @@ export default function DonationPage() {
 
               <Card className="border-2">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-secondary/20">
-                    <Construction className="h-8 w-8 text-secondary" />
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/20">
+                    <Construction className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="text-2xl">Page en construction</CardTitle>
                 </CardHeader>
