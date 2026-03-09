@@ -78,8 +78,8 @@ export function ActivitiesCarousel({ activities }: ActivitiesCarouselProps) {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="-left-4 bg-card border-border shadow-md hover:bg-muted" />
-        <CarouselNext className="-right-4 bg-card border-border shadow-md hover:bg-muted" />
+        <CarouselPrevious className="-left-4 md:-left-12 bg-card border-border shadow-md hover:bg-muted" />
+        <CarouselNext className="-right-4 md:-right-12 bg-card border-border shadow-md hover:bg-muted" />
       </Carousel>
     </div>
   )
