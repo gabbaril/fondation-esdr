@@ -5,7 +5,7 @@ import { Heart } from 'lucide-react'
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80">
-      <div className="container mx-auto flex h-18 items-center justify-between px-4">
+      <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
           <div className="flex h-12 w-12 items-center justify-center">
             <img src="/fondation-esdr.png" alt="Fondation ESDR" className="h-full w-auto"/>

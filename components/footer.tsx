@@ -23,22 +23,22 @@ export function Footer() {
             <h3 className="mb-5 font-semibold text-background">Navigation</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="#mission" className="text-background/70 transition-colors hover:text-secondary">
+                <Link href="#mission" className="text-background/70 transition-colors hover:text-background">
                   Notre Mission
                 </Link>
               </li>
               <li>
-                <Link href="#activites" className="text-background/70 transition-colors hover:text-secondary">
+                <Link href="#activites" className="text-background/70 transition-colors hover:text-background">
                   Activités
                 </Link>
               </li>
               <li>
-                <Link href="#galerie" className="text-background/70 transition-colors hover:text-secondary">
+                <Link href="#galerie" className="text-background/70 transition-colors hover:text-background">
                   Galerie
                 </Link>
               </li>
               <li>
-                <Link href="/faire-un-don" className="inline-flex items-center gap-2 text-secondary font-medium transition-colors hover:text-secondary/80">
+                <Link href="/faire-un-don" className="inline-flex items-center gap-2 text-background font-medium transition-colors hover:text-background/80">
                   <Heart className="h-4 w-4" />
                   Faire un don
                 </Link>
@@ -50,14 +50,14 @@ export function Footer() {
             <h3 className="mb-5 font-semibold text-background">Contact</h3>
             <ul className="space-y-3 text-sm text-background/70">
               <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-secondary" />
-                <a href="mailto:info@fondation-esdr.org" className="transition-colors hover:text-secondary">
+                <Mail className="h-4 w-4 text-background/50" />
+                <a href="mailto:info@fondation-esdr.org" className="transition-colors hover:text-background">
                   info@fondation-esdr.org
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-secondary" />
-                <a href="tel:+15551234567" className="transition-colors hover:text-secondary">
+                <Phone className="h-4 w-4 text-background/50" />
+                <a href="tel:+15551234567" className="transition-colors hover:text-background">
                   +1 555 123 4567
                 </a>
               </li>

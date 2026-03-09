@@ -18,13 +18,13 @@ export default function DonationPage() {
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-primary py-20 md:py-28">
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-secondary/20 blur-3xl" />
-            <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-secondary/15 blur-3xl" />
+            <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-primary-foreground/10 blur-3xl" />
+            <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-primary-foreground/5 blur-3xl" />
           </div>
           
           <div className="container relative mx-auto px-4 text-center">
             <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary-foreground/10">
-              <Heart className="h-10 w-10 text-secondary" />
+              <Heart className="h-10 w-10 text-primary-foreground" />
             </div>
             <h1 className="mb-6 font-heading uppercase text-5xl font-bold text-balance text-primary-foreground md:text-6xl">
               Faire un don
@@ -40,8 +40,8 @@ export default function DonationPage() {
             <div className="mx-auto max-w-2xl">
               <Card className="border-0 shadow-xl shadow-foreground/10">
                 <CardHeader className="pb-4 text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-secondary/20">
-                    <Construction className="h-8 w-8 text-secondary" />
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
+                    <Construction className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="text-2xl text-foreground">Page en construction</CardTitle>
                 </CardHeader>

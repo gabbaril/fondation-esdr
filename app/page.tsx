@@ -79,14 +79,14 @@ export default async function Page() {
           
           {/* Decorative elements */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-secondary/20 blur-3xl" />
-            <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-secondary/15 blur-3xl" />
+            <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-primary-foreground/10 blur-3xl" />
+            <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-primary-foreground/5 blur-3xl" />
           </div>
 
           <div className="relative container mx-auto px-4">
             <div className="mx-auto max-w-4xl text-center text-primary-foreground">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-2 text-sm font-medium backdrop-blur-sm">
-                <span className="h-2 w-2 rounded-full bg-secondary animate-pulse" />
+                <span className="h-2 w-2 rounded-full bg-primary-foreground animate-pulse" />
                 Fondation E.S.D.R. - Ecole Secondaire du Rocher
               </div>
               
@@ -100,13 +100,13 @@ export default async function Page() {
               </p>
 
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Button asChild size="lg" variant="secondary" className="min-w-[200px]">
+                <Button asChild size="lg" className="min-w-[200px] bg-primary-foreground text-primary shadow-lg shadow-foreground/20 hover:bg-primary-foreground/90">
                   <Link href="/faire-un-don">
                     Faire un don
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="min-w-[200px] border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
+                <Button asChild size="lg" variant="outline" className="min-w-[200px] border-2 border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground hover:border-primary-foreground/60">
                   <Link href="#mission">Découvrir notre mission</Link>
                 </Button>
               </div>
@@ -304,11 +304,11 @@ export default async function Page() {
           <div className="container mx-auto px-4">
             <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl bg-primary p-10 text-center text-primary-foreground md:p-16">
               {/* Decorative elements */}
-              <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-secondary/20 blur-3xl" />
-              <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-secondary/15 blur-3xl" />
+              <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-primary-foreground/10 blur-3xl" />
+              <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-primary-foreground/5 blur-3xl" />
               
               <div className="relative">
-                <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-secondary">Faites la différence</span>
+                <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary-foreground/70">Faites la différence</span>
                 <h2 className="mb-6 font-heading uppercase text-4xl font-bold text-balance md:text-5xl">
                   Votre soutien fait la différence
                 </h2>
@@ -316,7 +316,7 @@ export default async function Page() {
                   Chaque don contribue directement à améliorer l'éducation et l'avenir de nos jeunes. 
                   Ensemble, nous pouvons créer un impact durable sur notre communauté.
                 </p>
-                <Button asChild size="lg" variant="secondary" className="text-base">
+                <Button asChild size="lg" className="text-base bg-primary-foreground text-primary shadow-lg shadow-foreground/20 hover:bg-primary-foreground/90">
                   <Link href="/faire-un-don">
                     Contribuer maintenant
                     <ArrowRight className="ml-2 h-4 w-4" />
