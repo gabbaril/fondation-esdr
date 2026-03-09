@@ -14,13 +14,13 @@ export function Header() {
         </Link>
         
         <nav className="hidden items-center gap-8 md:flex">
-          <Link href="#mission" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+          <Link href="/#mission" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
             Mission
           </Link>
-          <Link href="#activites" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+          <Link href="/#activites" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
             Activités
           </Link>
-          <Link href="#galerie" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+          <Link href="/#galerie" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
             Galerie
           </Link>
         </nav>
