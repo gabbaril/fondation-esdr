@@ -17,8 +17,8 @@ const bebas = Bebas_Neue({
 })
 
 export const metadata: Metadata = {
-  title: 'Fondation École - Ensemble pour l\'Éducation',
-  description: 'La Fondation École soutient l\'éducation des jeunes. Faites un don pour contribuer à notre mission.',
+  title: 'Fondation E.S.D.R. - Ensemble pour l\'avenir de nos jeunes',
+  description: 'La Fondation E.S.D.R. est un organisme de bienfaisance qui soutient financièrement des projets structurants pour l\'école secondaire du Rocher et toute la communauté.',
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
